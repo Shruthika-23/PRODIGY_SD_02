@@ -1,0 +1,62 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guessing Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+      background: #f4f6f9;
+    }
+    h1 {
+      color: #333;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    #result {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎮 Number Guessing Game</h1>
+  <p>Guess a number between <b>1</b> and <b>100</b></p>
+
+  <input type="number" id="userGuess" placeholder="Enter your guess">
+  <button onclick="checkGuess()">Submit</button>
+
+  <p id="result"></p>
+  <p id="attempts"></p>
+
+  <script>
+    // Generate random number
+    let randomNumber = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
+
+    function checkGuess() {
+      let guess = document.getElementById("userGuess").value;
+      attempts++;
+
+      if (guess == randomNumber) {
+        document.getElementById("result").innerHTML = 
+          "🎉 Correct! The number was " + randomNumber;
+        document.getElementById("attempts").innerHTML = 
+          "It took you " + attempts + " attempts.";
+      } else if (guess < randomNumber) {
+        document.getElementById("result").innerHTML = "⬆ Too low! Try again.";
+      } else {
+        document.getElementById("result").innerHTML = "⬇ Too high! Try again.";
+      }
+    }
+  </script>
+
+</body>
+</html>
